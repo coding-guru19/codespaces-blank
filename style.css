@@ -1,0 +1,396 @@
+/* --- 1. Global Reset, Variables, and Base Styles --- */
+:root {
+    /* Primary Colors: High-Contrast and Trustworthy */
+    --color-primary: #FF5722;      /* Emergency/Action Orange - Slightly deeper */
+    --color-secondary: #0D2C59;    /* Corporate Navy Blue - Richer */
+    --color-tertiary: #1A4785;     /* Mid-tone blue for accents */
+    --color-background: #F4F7F9;   /* Off-White/Light Gray */
+    --color-text-dark: #222;
+    --color-text-light: #DDD;
+
+    --font-stack: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --transition-speed: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smoother transition curve */
+    --border-radius-large: 16px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-stack);
+    line-height: 1.6;
+    color: var(--color-text-dark);
+    background-color: #fff;
+    min-width: 320px;
+}
+
+/* --- 2. Header and Navigation (Sleek, Fixed Bar) --- */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 5%;
+    background-color: white;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08); 
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Highest z-index */
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--color-secondary);
+    letter-spacing: -0.5px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--color-secondary);
+    font-weight: 500;
+    padding: 0 18px;
+    position: relative;
+    transition: color var(--transition-speed);
+}
+
+nav ul li a:hover {
+    color: var(--color-primary);
+}
+
+/* --- 3. Buttons (Professional, Defined CTA) --- */
+.btn {
+    padding: 14px 30px;
+    border: none;
+    border-radius: 6px; 
+    text-transform: uppercase;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all var(--transition-speed);
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    display: inline-block;
+}
+
+.btn-primary {
+    background-image: linear-gradient(135deg, var(--color-primary) 0%, #FF8A65 100%);
+    color: white;
+    box-shadow: 0 10px 25px rgba(255, 87, 34, 0.4);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px); 
+    box-shadow: 0 15px 35px rgba(255, 87, 34, 0.6); 
+    background-image: linear-gradient(135deg, #FF8A65 0%, var(--color-primary) 100%);
+}
+
+.btn-secondary {
+    background-color: var(--color-secondary);
+    color: white;
+    margin-left: 20px;
+    border: 1px solid var(--color-secondary);
+    box-shadow: none;
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-tertiary);
+    transform: translateY(-3px);
+}
+
+/* --- 4. Hero Section (Maximum Impact Banner) --- */
+.hero-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    padding: 80px 5% 0; 
+    /* Deep gradient background for depth */
+    background-image: linear-gradient(160deg, var(--color-secondary) 0%, #0F376B 100%);
+    color: white;
+    min-height: 80vh;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    max-width: 700px;
+    z-index: 10;
+    text-align: left;
+}
+
+.hero-content .starter {
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--color-primary);
+    line-height: 1;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.hero-content h1, .hero-content h2 {
+    font-size: 4.5rem; /* Larger text for impact */
+    font-weight: 900; 
+    text-transform: uppercase;
+    line-height: 1.05;
+}
+
+.hero-content h2 {
+    font-size: 4.5rem;
+    font-weight: 700; 
+    color: #F0F0F0; /* Slightly off-white for contrast */
+}
+
+.hero-content p {
+    margin: 30px 0 40px;
+    font-size: 1.1rem;
+    font-weight: 300; 
+    max-width: 550px;
+    color: var(--color-text-light);
+}
+
+.hero-image-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    height: 100%;
+    position: relative;
+}
+
+.hero-image {
+    max-height: 650px;
+    width: auto;
+    object-fit: contain;
+    position: relative;
+    z-index: 20; 
+    /* Soft 3D lift */
+    transform: translateY(10px); 
+    filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.5)); 
+}
+
+/* Abstract Background Shape (Dynamic Splice) */
+.hero-image-container::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -150px;
+    width: 700px;
+    height: 700px;
+    background: var(--color-primary);
+    /* Creates a complex, dynamic shape */
+    clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%); 
+    opacity: 0.85;
+    z-index: 1;
+    transform: rotate(10deg);
+}
+
+/* --- 5. Wave Divider (Clean Diagonal Slice) --- */
+.wave-divider {
+    background-color: var(--color-secondary);
+    height: 150px; 
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.wave-divider::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-background);
+    /* Simple, clean diagonal cut */
+    clip-path: polygon(0 80%, 100% 0, 100% 100%, 0% 100%);
+}
+
+/* --- 6. Info and Card Section (Elevated UI) --- */
+.info-section {
+    padding: 70px 5%;
+    text-align: center;
+    background-color: var(--color-background); 
+}
+
+.info-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 60px;
+    color: var(--color-secondary);
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card {
+    background: white;
+    padding: 40px;
+    border-radius: var(--border-radius-large);
+    /* Inner/Outer shadow combo for real depth (Neumorphism inspiration) */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12), inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+    text-align: left;
+    transition: all var(--transition-speed);
+    border-bottom: 5px solid transparent; 
+}
+
+.card:hover {
+    transform: translateY(-10px); 
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+    border-bottom-color: var(--color-primary); 
+}
+
+.card h3 {
+    color: var(--color-secondary);
+    margin-bottom: 15px;
+    font-size: 1.6rem;
+    border-bottom: 2px solid var(--color-background);
+    padding-bottom: 10px;
+}
+
+.icon-placeholder {
+    font-size: 3rem;
+    color: var(--color-primary);
+    margin-bottom: 20px;
+    line-height: 1;
+}
+
+.card ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 15px;
+}
+
+.card ul li {
+    margin-bottom: 10px;
+    padding-left: 30px;
+    position: relative;
+    font-size: 1rem;
+}
+
+.card ul li::before {
+    content: '★'; /* Star for quality/priority */
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+/* --- 7. Footer (Founder Section - Dark and Authoritative) --- */
+.founder-footer {
+    background-color: var(--color-secondary);
+    padding: 70px 5%;
+    color: white;
+}
+
+.founder-content {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.founder-photo {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 8px solid var(--color-primary);
+    box-shadow: 0 0 0 10px rgba(255, 87, 34, 0.2); 
+    flex-shrink: 0;
+}
+
+.founder-content h2 {
+    color: var(--color-primary);
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+}
+
+.founder-content p {
+    font-weight: 300;
+    color: var(--color-text-light);
+}
+
+/* --- 8. Media Queries (Smooth Responsiveness) --- */
+@media (max-width: 1024px) {
+    .hero-section {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding-top: 50px;
+    }
+
+    .hero-content h1, .hero-content h2 {
+        font-size: 3.5rem;
+    }
+
+    .hero-content {
+        padding-bottom: 20px;
+    }
+
+    .hero-image-container {
+        justify-content: center;
+        align-items: center;
+        padding-top: 40px;
+    }
+    
+    .hero-image-container::before {
+        width: 550px;
+        height: 550px;
+        top: 0;
+        right: 50%;
+        transform: translate(50%, 0) rotate(10deg);
+    }
+    
+    .hero-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+
+    .btn-secondary {
+        margin-left: 0;
+    }
+
+    .main-header {
+        flex-direction: column;
+        padding: 10px 5%;
+    }
+
+    nav {
+        margin: 10px 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .hero-content h1, .hero-content h2 {
+        font-size: 2.5rem;
+    }
+    .hero-content .starter {
+        font-size: 2rem;
+    }
+    .btn {
+        padding: 12px 20px;
+        font-size: 0.8rem;
+    }
+    
+    .founder-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .founder-photo {
+        width: 150px;
+        height: 150px;
+    }
+}
